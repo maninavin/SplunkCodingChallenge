@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="3003" started-at="2018-05-11T08:24:14Z" finished-at="2018-05-11T08:24:17Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="3003" started-at="2018-05-11T08:24:14Z" finished-at="2018-05-11T08:24:17Z">
+      <class name="com.movieDatabaseSplunk.movieDatabaseAPI.TestSumMovieGenre">
+        <test-method status="PASS" signature="getData()[pri:0, instance:com.movieDatabaseSplunk.movieDatabaseAPI.TestSumMovieGenre@4520ebad]" name="getData" is-config="true" duration-ms="7" started-at="2018-05-11T01:24:14Z" finished-at="2018-05-11T01:24:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getData -->
+        <test-method status="PASS" signature="validateMovieImage()[pri:0, instance:com.movieDatabaseSplunk.movieDatabaseAPI.TestSumMovieGenre@4520ebad]" name="validateMovieImage" duration-ms="2976" started-at="2018-05-11T01:24:14Z" finished-at="2018-05-11T01:24:17Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateMovieImage -->
+      </class> <!-- com.movieDatabaseSplunk.movieDatabaseAPI.TestSumMovieGenre -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
