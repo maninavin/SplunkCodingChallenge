@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.movieDatabaseSplunk.movieDatabaseAPI.TestMovieGenre">
+      <class name="com.movieDatabaseSplunk.movieDatabaseAPI.AddMovieTest">
         <methods>
+          <include name="addMovieToDatabase"/>
           <include name="getData"/>
-          <include name="validateMovieImage"/>
         </methods>
-      </class> <!-- com.movieDatabaseSplunk.movieDatabaseAPI.TestMovieGenre -->
+      </class> <!-- com.movieDatabaseSplunk.movieDatabaseAPI.AddMovieTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

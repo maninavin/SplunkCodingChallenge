@@ -10,12 +10,6 @@ public class ReusableMethods {
 		JsonPath js = new JsonPath(resp);
 		return js;
 	}
-	
-	
-
-	
-	
-	
 }
 
      

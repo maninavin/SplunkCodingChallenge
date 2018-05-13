@@ -11,6 +11,7 @@ import groovyjarjarantlr.collections.List;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.testng.Assert.assertTrue;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -36,7 +37,7 @@ Properties prop = new Properties();
 		
 	}
 	@Test
-	public void validateMovieImage() {
+	public void testSumOfGenreIds() {
 		
 		//Base URL
 		RestAssured.baseURI = prop.getProperty("HOST");
@@ -64,7 +65,7 @@ Properties prop = new Properties();
 		  //System.out.println(sum_of_genre_ids);
 		}
 		
-        Assert.assertTrue(count<=7,"There are more than 7 movies with genre_ids sum greater than 400");
+        assertTrue(count<=7,"There are more than 7 movies with genre_ids sum greater than 400");
 
 		
 	}

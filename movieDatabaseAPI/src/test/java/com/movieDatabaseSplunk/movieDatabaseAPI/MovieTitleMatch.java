@@ -11,6 +11,7 @@ import groovyjarjarantlr.collections.List;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.testng.Assert.assertTrue;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -36,7 +37,7 @@ Properties prop = new Properties();
 		
 	}
 	@Test
-	public void validateMovieImage() {
+	public void testMoviesTitleMatch() {
 		
 		//Base URL
 		RestAssured.baseURI = prop.getProperty("HOST");
@@ -51,23 +52,32 @@ Properties prop = new Properties();
 		int response_arr = js.get("results.size()");
 		int count = 0;
 		
+		ArrayList<String> movie_list = new ArrayList<String>();
+		
        for (int i=0 ; i<response_arr; i++) {
     	   String movie_title = js.get("results["+i+"].title");
-    	   String words[] = movie_title.split(" ");
-    	   for( int j=0;j<words.length;j++) {
-    		   StringBuilder reversed_movie_word_in_title = new StringBuilder();
-    		   reversed_movie_word_in_title.append(words[j].toLowerCase());
-    		  String reversed_movie_word_in_title_first = reversed_movie_word_in_title.reverse().toString().toLowerCase();
-    		   if(reversed_movie_word_in_title_first.equals(words[j].toLowerCase())) {
-    			   count++;
-    		   }
-    	    }
+    	   movie_list.add(movie_title);   
 
+    	 }
+       System.out.println(movie_list);
+       for (int j=0 ; j<movie_list.size(); j++) {
+    	   for(int k=0 ;k<movie_list.size(); k++) {
+    	   if(movie_list.get(j).contains(movie_list.get(k)) && movie_list.get(j)!=movie_list.get(k)) {
+    		   System.out.println("String 1: " + movie_list.get(j) + " String 2: " + movie_list.get(k)); 
+    		   count++;
+    	   }
+    	   
        }
+  }
        
-       System.out.println(count);
-       Assert.assertTrue(count>=1,"There are no movies which contains palindrome in it.");
+       
+       assertTrue(count>=2,"There are no two movies whose title contains title of another.");
 
-   }
+       
 
 }
+       
+
+}
+
+

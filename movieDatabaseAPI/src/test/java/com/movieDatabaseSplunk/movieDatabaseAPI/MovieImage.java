@@ -11,6 +11,7 @@ import groovyjarjarantlr.collections.List;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.testng.Assert.assertTrue;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,7 +38,7 @@ public class MovieImage {
 	}
 	
 	@Test
-	public void validateMovieImage() {
+	public void testDuplicateImages() {
 		
 		//Base URL
 		RestAssured.baseURI = prop.getProperty("HOST");
@@ -55,37 +56,25 @@ public class MovieImage {
 		
 		
 		ArrayList<String> imagesList = new ArrayList<String>();
-		Set<String> nonDuplicateSet = new HashSet<String>();
-		Set<String> DuplicateSet = new HashSet<String>();
-		ArrayList<String> DuplicateImagesList = new ArrayList<String>();
+		Set<String> imagesSet = new HashSet<String>();
+
 		
 		for (int i=0;i<response_arr;i++) {
 			String movieImages = js.get("results["+i+"].poster_path");
-			//System.out.println(movieImages);
-			imagesList.add(movieImages);	
+			System.out.println(movieImages);
+			imagesList.add(movieImages);		
 		}
 		
-		for (String str:imagesList) {
-			if(!nonDuplicateSet.contains(str)) {
-				nonDuplicateSet.add(str);
+		for (int i=0; i<imagesList.size();i++) {
+			if(!imagesSet.add(imagesList.get(i))) {
+				assertTrue(imagesSet.size() == imagesList.size(),"Movies have duplicate images, "+ "Duplicate Image is: "+ imagesList.get(i) );
 			}
-			else {
-				DuplicateSet.add(str);
-			}
-		}
-		
-        for (String s : DuplicateSet) {
-        	if(s != null) {
-        		DuplicateImagesList.add(s);
-        	}
-        }
-        
-        System.out.println(DuplicateImagesList);
-        
-        Assert.assertTrue(DuplicateImagesList.size()==0,"There are duplicates images present for the movies");
 		
 		}
 		
+        
 	}
+		
+}
 
 

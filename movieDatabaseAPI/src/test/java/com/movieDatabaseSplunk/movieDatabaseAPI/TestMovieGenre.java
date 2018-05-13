@@ -11,6 +11,7 @@ import groovyjarjarantlr.collections.List;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.testng.Assert.assertEquals;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -38,7 +39,7 @@ Properties prop = new Properties();
 	}
 	
 	@Test
-	public void validateMovieImage() {
+	public void testSortingRequirement() {
 		
 		//Base URL
 		RestAssured.baseURI = prop.getProperty("HOST");
@@ -47,35 +48,83 @@ Properties prop = new Properties();
 		param("q", prop.getProperty("MOVIE_TYPE")).
 		header("Accept", prop.getProperty("ACCEPT_TYPE")).
 		when().get(Resources.getAndPostData()).
-		then().assertThat().statusCode(200).and().contentType(ContentType.JSON).and().body("results[0].genre_ids[0]",equalTo(null)).and().extract().response();
+		then().assertThat().statusCode(200).and().contentType(ContentType.JSON).and().extract().response();
 		
 		JsonPath js = ReusableMethods.rawtoJson(res);
-		int response_arr = js.get("results.size()");
+		
+		
+		int response_arr_size = js.get("results.size()");
+		int count=0;
+		boolean nullValuesPresent = false;
 		ArrayList<Integer> genre_ids_list = new ArrayList<Integer>();
-		ArrayList<Integer> genre_ids_sorted = new ArrayList<Integer>();
+		ArrayList<Integer> movie_id_list_with_null_genre_ids = new ArrayList<Integer>();
+		ArrayList<Integer> movie_id_list_with_non_null_genre_ids = new ArrayList<Integer>();
 		
-		for (int i=0;i<response_arr;i++) {
-			  int genre_ids_size = js.get("results["+i+"].genre_ids.size()");
-			  for(int j=0;j<genre_ids_size;j++) {
-				  int genre_ids =  js.get("results["+i+"].genre_ids["+j+"]") ;
-				  genre_ids_list.add(genre_ids);
-			  }
-			  
-		
-		}
-		System.out.println(genre_ids_list);
-		Collections.sort(genre_ids_list);
-		genre_ids_sorted.addAll(genre_ids_list);
-		  System.out.println(genre_ids_sorted);
-//Need to add 3 asserts for 3 scenarios
-// 1. First genre id should be null
-// 2. If two multiple are null then sort by ascending id
 
-// 3. For not null values of genre id sort by ascending order of id
-		  
-// NOTE :- Did wrong sorting I need to sort bu id if there are multiple null values/no null values.
 		
+		
+// Verifying whether movies with genre_ids null is first in the response	
+		for (int k=0;k<response_arr_size;k++) {
+			
+			 if((Integer)js.get("results["+k+"].genre_ids.size()") == 0) {
+				 nullValuesPresent =true;
+			 }
+		}
+		
+		if(nullValuesPresent==true) {
+			for (int i=0;i<response_arr_size;i++) {
+				assertEquals(js.get("results["+i+"].genre_ids.size()"), 0,"genre_ids with null values are not first in response."+"genre_id"+js.get("results["+i+"].genre_ids"));
+			}
+		}
+		
+
+//Adding the list of movies with null genre ids
+		for (int i=0;i<response_arr_size;i++) {
+			 int genre_ids_check = js.get("results["+i+"].genre_ids.size()");
+			 int movie_id =  js.get("results["+i+"].id");
+				if(genre_ids_check==0) {
+					movie_id_list_with_null_genre_ids.add(movie_id);
+
+				}
+			
 	}
+		
+		Collections.sort(movie_id_list_with_null_genre_ids);
+
+//Validating whether a null genre id movies are sorted with ids.
+		for (int i=0;i<movie_id_list_with_null_genre_ids.size();i++) {
+			 int genre_ids_check = js.get("results["+i+"].genre_ids.size()");
+			 if(genre_ids_check == 0) {
+				assertEquals(js.get("results["+i+"].id"), movie_id_list_with_null_genre_ids.get(i),"Movies with null genre_ids are not sorted with ids");
+			 }		
+	}
+		
+
+		
+//Adding the list of movies with non-null genre ids
+		
+		for (int i=0;i<response_arr_size;i++) {
+			 int genre_ids_check = js.get("results["+i+"].genre_ids.size()");
+			 int movie_id =  js.get("results["+i+"].id");
+				if(genre_ids_check!=0) {
+					movie_id_list_with_non_null_genre_ids.add(movie_id);
+				}
+	}
+		
+		Collections.sort(movie_id_list_with_non_null_genre_ids);
+
+		
+//Validating whether a non-null genre id movies are sorted with ids.
+		
+		for (int i=0;i<movie_id_list_with_non_null_genre_ids.size();i++) {
+			 int genre_ids_check = js.get("results["+i+"].genre_ids.size()");
+			 if(genre_ids_check != 0) {
+				assertEquals(js.get("results["+i+"].id"), movie_id_list_with_non_null_genre_ids.get(i),"Movies with non-null genre_ids are not sorted with ids");
+			 }		
+	}
+
+
+}
 }
 
 
