@@ -3,7 +3,8 @@
 <test name ="MoviesDatabaseAPITests">
 
 <classes>
-<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.AddMovieTest" />
+<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.SumMovieGenreTest" />
+<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.PalindromeMovieTitleTest" />
 </classes>
 
 </test>
