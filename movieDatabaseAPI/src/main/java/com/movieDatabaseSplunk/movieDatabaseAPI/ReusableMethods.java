@@ -25,6 +25,7 @@ public class ReusableMethods {
 
 		// Base URL
 		//System.out.println("VM argumet: "+System.getProperty("pool"));
+		//abc
 		
 		
 		//RestAssured.baseURI = System.getProperty("pool");// 
@@ -42,6 +43,7 @@ public class ReusableMethods {
 
 		// Base URL
 		RestAssured.baseURI = "https://splunk.mocklab.io";
+		
 
 		given().header("Content-Type", "application/json").body(payLoad.getPostData()).when()
 				.post(Resources.getAndPostData()).then().assertThat().statusCode(200).and()
