@@ -18,31 +18,28 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 public class PosterPathLinkValidation {
-	
 
+	public static boolean validatePosterPathLink(String posterPathLink) throws IOException, MalformedURLException {
 
-	public static boolean validatePosterPathLink(String posterPathLink) throws IOException,MalformedURLException {
-		
 		try {
-			if(posterPathLink==null) {
+			if (posterPathLink == null) {
 				return true;
 			}
 			URL url = new URL(posterPathLink);
-			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("GET");
 			connection.connect();
 
 			int code = connection.getResponseCode();
 			System.out.println(code);
-			
-			if(code==200) {
-			  return true;
+
+			if (code == 200) {
+				return true;
 			}
 			return false;
+		} catch (Exception e) {
+			return false;
 		}
-		catch(Exception e){
-			 return false;
-		}
-		
-}
+
+	}
 }
