@@ -3,7 +3,7 @@
 <test name ="MoviesDatabaseAPITests">
 
 <classes>
-<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.TestPalindromeMovieTitle" />
+<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.AddMovieTest" />
 </classes>
 
 </test>
