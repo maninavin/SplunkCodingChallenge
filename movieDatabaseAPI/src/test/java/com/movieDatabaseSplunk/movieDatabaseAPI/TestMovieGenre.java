@@ -51,7 +51,7 @@ public class TestMovieGenre {
 
 		if (nullValuesPresent == true) {
 			for (int i = 0; i < response_arr_size; i++) {
-				assertEquals(js.get("results[" + i + "].genre_ids.size()"), 0,
+				assertEquals(js.get("results[" + i + "].genre_ids.size()"), null,
 						"genre_ids with null values are not first in response : " + "genre_id"
 								+ js.get("results[" + i + "].genre_ids"));
 			}
