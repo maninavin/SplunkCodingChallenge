@@ -24,11 +24,11 @@ public class ReusableMethods {
 	public static Response getResponseData() {
 
 		// Base URL
-		System.out.println("VM argumet: "+System.getProperty("pool"));
+		//System.out.println("VM argumet: "+System.getProperty("pool"));
 		
 		
-		RestAssured.baseURI = System.getProperty("pool");// 
-		//RestAssured.baseURI = "https://splunk.mocklab.io";
+		//RestAssured.baseURI = System.getProperty("pool");// 
+        RestAssured.baseURI = "https://splunk.mocklab.io";
 
 		Response res = given().param("q", "batman").header("Accept", "application/json").log().all().when()
 				.get(Resources.getAndPostData()).then().assertThat().statusCode(200).and().contentType(ContentType.JSON)
