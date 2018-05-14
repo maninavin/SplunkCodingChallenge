@@ -51,7 +51,7 @@ public class TestMovieGenre {
 
 		if (nullValuesPresent == true) {
 			for (int i = 0; i < response_arr_size; i++) {
-				Assert.assertEquals(js.get("results[" + i + "].genre_ids.size()"), null,
+				Assert.assertEquals((Integer)js.get("results[" + i + "].genre_ids.size()"), (Integer)null,
 						"genre_ids with null values are not first in response : " + "genre_id"
 								+ js.get("results[" + i + "].genre_ids"));
 			}
@@ -74,7 +74,7 @@ public class TestMovieGenre {
 		for (int i = 0; i < movie_id_list_with_null_genre_ids.size(); i++) {
 			int genre_ids_check = js.get("results[" + i + "].genre_ids.size()");
 			if (genre_ids_check == 0) {
-				Assert.assertEquals(js.get("results[" + i + "].id"), movie_id_list_with_null_genre_ids.get(i),
+				Assert.assertEquals((Integer)js.get("results[" + i + "].id"), (Integer)movie_id_list_with_null_genre_ids.get(i),
 						"Movies with null genre_ids are not sorted with ids");
 			}
 		}
@@ -96,7 +96,7 @@ public class TestMovieGenre {
 		for (int i = 0; i < movie_id_list_with_non_null_genre_ids.size(); i++) {
 			int genre_ids_check = js.get("results[" + i + "].genre_ids.size()");
 			if (genre_ids_check != 0) {
-				Assert.assertEquals(js.get("results[" + i + "].id"), movie_id_list_with_non_null_genre_ids.get(i),
+				Assert.assertEquals((Integer)js.get("results[" + i + "].id"), (Integer)movie_id_list_with_non_null_genre_ids.get(i),
 						"Movies with non-null genre_ids are not sorted with ids");
 			}
 		}
