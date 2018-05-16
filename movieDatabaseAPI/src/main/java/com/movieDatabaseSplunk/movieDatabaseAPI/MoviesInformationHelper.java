@@ -88,6 +88,7 @@ public class MoviesInformationHelper {
 		JsonPath js1 = ReusableMethods.rawtoJson(res1);
 		js1.get("results[0].title");
 		int afterPostMovieSize = (js1.get("results.size()"));
+		System.out.println(afterPostMovieSize);
 
 		if (afterPostMovieSize > beforePostMovieSize) {
 			return true;
@@ -95,6 +96,33 @@ public class MoviesInformationHelper {
 			return false;
 		}
 
+	}
+	
+	
+	/**
+	 * This method verifies whether success message is displayed for POST request
+	 * the movie is added by POST movies request. 
+	 * Movies API Usage:
+	 * assertTrue(verifyAddMoviesToDatabase) == True
+	 * 
+	 * @author M.Subramaniam
+	 */
+	
+	
+	public static boolean verifyAddMoviesToDatabase() {
+		Response response = ReusableMethods.postMovieData();
+		JsonPath js = ReusableMethods.rawtoJson(response);
+		String actualSuccessMessage = js.get("message");
+		System.out.println("SuccessMessage is: "+actualSuccessMessage);
+		String expectedSuccessMessage = "Splunking your submission using monkeys ..... success... movie posted to catalog";
+		
+		if(expectedSuccessMessage.equals(actualSuccessMessage)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
 	}
 	
 	
@@ -215,6 +243,17 @@ public class MoviesInformationHelper {
 	
 	
 	
+	/**
+	 * This method verifies whether all the poster path links are valid.
+	 * contains the title of another movies.
+	 * Movies API Usage:
+	 * assertTrue(verifyPosterPathLinks) == True
+	 * 
+	 * @author M.Subramaniam
+	 */
+	
+
+	
 	
 	public static boolean verifyPosterPathLinks(JsonPath js) throws MalformedURLException, IOException {
 		int response_arr_size = js.get("results.size()");
@@ -230,6 +269,18 @@ public class MoviesInformationHelper {
 		return true;
 		
 	}
+	
+	
+	
+	/**
+	 * This method verifies if the first genre id is null.
+	 * contains the title of another movies.
+	 * Movies API Usage:
+	 * assertTrue(verifyFirstGenreIdsNull) == True
+	 * 
+	 * @author M.Subramaniam
+	 */
+	
 	
 	
 	
@@ -258,6 +309,16 @@ public class MoviesInformationHelper {
 		return true;
 	}
 	
+	
+	
+	/**
+	 * This method verifies if the null genre ids are sorted in ascending order.
+	 * contains the title of another movies.
+	 * Movies API Usage:
+	 * assertTrue(verifyNullGenreIdsAreSortedByIds) == True
+	 * 
+	 * @author M.Subramaniam
+	 */
 	
 	
 	
@@ -292,6 +353,20 @@ public class MoviesInformationHelper {
 		return true;
 		
 	}
+	
+	
+	
+	/**
+	 * This method verifies if the non-null genre ids are sorted in ascending order.
+	 * contains the title of another movies.
+	 * Movies API Usage:
+	 * assertTrue(verifyNonNullGenreIdsSortedByIds) == True
+	 * 
+	 * @author M.Subramaniam
+	 */
+	
+	
+	
 	
 	
 	public static boolean verifyNonNullGenreIdsSortedByIds(JsonPath js) {

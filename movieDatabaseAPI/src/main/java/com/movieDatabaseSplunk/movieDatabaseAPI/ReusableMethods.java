@@ -39,15 +39,18 @@ public class ReusableMethods {
 
 	}
 
-	public static void postMovieData() {
+	public static Response postMovieData() {
 
 		// Base URL
 		RestAssured.baseURI = "https://splunk.mocklab.io";
 		
 
-		given().header("Content-Type", "application/json").body(payLoad.getPostData()).when()
+		Response res1 = given().header("Content-Type", "application/json").body(payLoad.getPostData()).when()
 				.post(Resources.getAndPostData()).then().assertThat().statusCode(200).and()
-				.log().all();
+				.log().all().extract().response();
+		System.out.println(res1);
+		
+		return res1;
 
 	}
 
