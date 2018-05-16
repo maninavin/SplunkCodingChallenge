@@ -17,7 +17,7 @@ import org.testng.Assert;
 
 public class checkNoOfRecordsByCountTest {
 	
-	String currentDir = System.getProperty("user.dir") + File.separator + "Library\\TestData.xlsx";
+	String currentDir = System.getProperty("user.dir") + File.separator + "Library//TestData.xlsx";
 
 	@DataProvider(name = "AddingCountPositiveCasesTest")
 	public Object[][] fetchPositiveTestData() throws Exception {

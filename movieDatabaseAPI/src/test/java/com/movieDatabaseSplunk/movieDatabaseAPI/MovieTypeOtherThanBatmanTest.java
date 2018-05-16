@@ -14,7 +14,7 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 public class MovieTypeOtherThanBatmanTest {
 	
-	String currentDir = System.getProperty("user.dir")+File.separator+"Library\\TestData.xlsx";
+	String currentDir = System.getProperty("user.dir")+File.separator+"Library//TestData.xlsx";
 
        @DataProvider(name = "InvalidParametersTest")
        public Object[][] fetchTestData() throws Exception{
