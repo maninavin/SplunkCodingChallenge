@@ -10,6 +10,8 @@
 <class name = "com.movieDatabaseSplunk.movieDatabaseAPI.PosterPathLinkTest" />
 <class name = "com.movieDatabaseSplunk.movieDatabaseAPI.MovieGenreRulesTest" />
 <class name = "com.movieDatabaseSplunk.movieDatabaseAPI.AddMovieTest" />
+<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.MovieTypeOtherThanBatmanTest" />
+<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.checkNoOfRecordsByCountTest" />
 </classes>
 
 </test>

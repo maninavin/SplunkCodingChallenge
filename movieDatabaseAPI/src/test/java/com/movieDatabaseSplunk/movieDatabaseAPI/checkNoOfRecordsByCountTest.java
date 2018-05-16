@@ -70,7 +70,7 @@ public class checkNoOfRecordsByCountTest {
 				.response();
 		int actualStatusCode = res.getStatusCode();
 
-		Assert.assertEquals(actualStatusCode, expectedStatusCode, "The response code is not as expected");
+		Assert.assertEquals(actualStatusCode, expectedStatusCode, "The response code with invalid count should be 404 : (Assumption)");
 
 	}
 
