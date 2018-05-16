@@ -12,7 +12,7 @@
 <class name = "com.movieDatabaseSplunk.movieDatabaseAPI.AddMovieTest" />
 <class name = "com.movieDatabaseSplunk.movieDatabaseAPI.MovieTypeOtherThanBatmanTest" />
 <class name = "com.movieDatabaseSplunk.movieDatabaseAPI.checkNoOfRecordsByCountTest" />
-<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.verifySuccessMessageForAddMovieTest" />
+<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.VerifySuccessMessageForAddMovieTest" />
 </classes>
 
 </test>
