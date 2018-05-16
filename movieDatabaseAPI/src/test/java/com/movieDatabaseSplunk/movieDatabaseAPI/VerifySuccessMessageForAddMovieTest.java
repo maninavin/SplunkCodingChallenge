@@ -24,7 +24,7 @@ public class VerifySuccessMessageForAddMovieTest {
 	public void addMovieToVerifySuccessMessage() {
 
 		assertTrue(MoviesInformationHelper.verifyAddMoviesToDatabase(),
-				"Success message for movies added by POST is not as expected");
+				"Success message for movies added by POST request is not as expected");
 
 	}
 
