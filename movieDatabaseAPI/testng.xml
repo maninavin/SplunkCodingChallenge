@@ -6,6 +6,10 @@
 <class name = "com.movieDatabaseSplunk.movieDatabaseAPI.SumMovieGenreTest" />
 <class name = "com.movieDatabaseSplunk.movieDatabaseAPI.PalindromeMovieTitleTest" />
 <class name = "com.movieDatabaseSplunk.movieDatabaseAPI.MovieTitleMatchTest" />
+<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.DuplicateMovieImagesTest" />
+<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.PosterPathLinkTest" />
+<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.MovieGenreRulesTest" />
+<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.AddMovieTest" />
 </classes>
 
 </test>
