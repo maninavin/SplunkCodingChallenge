@@ -5,6 +5,7 @@
 <classes>
 <class name = "com.movieDatabaseSplunk.movieDatabaseAPI.SumMovieGenreTest" />
 <class name = "com.movieDatabaseSplunk.movieDatabaseAPI.PalindromeMovieTitleTest" />
+<class name = "com.movieDatabaseSplunk.movieDatabaseAPI.MovieTitleMatchTest" />
 </classes>
 
 </test>
