@@ -21,7 +21,7 @@ import org.testng.annotations.Test;
 public class VerifySuccessMessageForAddMovieTest {
 
 	@Test
-	public void addMovieToVerifySuccessMessage() {
+	public void addMovieToVerifySuccessMessage() throws NoSuchMethodException {
 
 		assertTrue(MoviesInformationHelper.verifyAddMoviesToDatabase(),
 				"Success message for movies added by POST request is not as expected");

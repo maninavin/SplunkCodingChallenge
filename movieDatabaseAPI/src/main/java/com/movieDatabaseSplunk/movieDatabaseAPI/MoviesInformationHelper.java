@@ -109,7 +109,7 @@ public class MoviesInformationHelper {
 	 */
 	
 	
-	public static boolean verifyAddMoviesToDatabase() {
+	public static boolean verifyAddMoviesToDatabase() throws NoSuchMethodException  {
 		Response response = ReusableMethods.postMovieData();
 		JsonPath js = ReusableMethods.rawtoJson(response);
 		String actualSuccessMessage = js.get("message");
