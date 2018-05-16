@@ -51,7 +51,8 @@ public class ExcelReaderPoi {
 
 			Workbook workbook = getWorkbook(fileName);
 			Sheet sheet = workbook.getSheet(sheetName);
-			
+
+//Use Dataformatter to read excel content in string format
 			DataFormatter formatter = new DataFormatter();
 
 			Row rw = sheet.getRow(0);
